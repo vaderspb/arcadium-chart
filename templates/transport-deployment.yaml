@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arcadium-transport-deployment
+spec:
+  replicas: {{ .Values.transport.replicaCount }}
+  selector:
+    matchLabels:
+      app: arcadium-transport
+  template:
+    metadata:
+      labels:
+        app: arcadium-transport
+    spec:
+      containers:
+        - name: app
+          image: {{ .Values.transport.image }}
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.transport.resources | nindent 12 }}
