@@ -1,6 +1,6 @@
 transport:
-  image: "arcadium-transport:latest"
-  replicaCount: 1
+  image: "vaderspb/arcadium-transport:0.0.1v2"
+  replicaCount: 2
   resources:
     limits:
       cpu: 100m
