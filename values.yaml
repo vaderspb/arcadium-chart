@@ -8,9 +8,16 @@ transport:
     requests:
       cpu: 100m
       memory: 128Mi
-  service:
-    type: ClusterIP
-    port: 8080
+
+worker:
+  image: "vaderspb/arcadium-worker:0.0.1v1"
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1024Mi
+    requests:
+      cpu: 1000m
+      memory: 1024Mi
 
 ingress:
   enabled: false
