@@ -10,7 +10,7 @@ transport:
       memory: 128Mi
 
 worker:
-  image: "vaderspb/arcadium-worker:0.0.1v2"
+  image: "vaderspb/arcadium-worker:0.0.1v3"
   resources:
     limits:
       cpu: 1000m

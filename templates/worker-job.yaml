@@ -20,6 +20,8 @@ spec:
           env:
             - name: ROM_FILE
               value: /opt/arkadium/Battletoads.nes
+            - name: INACTIVITY_DURATION
+              value: P1D
           ports:
             - name: http
               containerPort: 8080
