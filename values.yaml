@@ -1,16 +1,16 @@
 transport:
-  image: "vaderspb/arcadium-transport:0.0.1v2"
-  replicaCount: 2
+  image: "vaderspb/arcadium-transport:0.0.1v4"
+  replicaCount: 1
   resources:
     limits:
-      cpu: 100m
-      memory: 128Mi
+      cpu: 500m
+      memory: 512Mi
     requests:
-      cpu: 100m
-      memory: 128Mi
+      cpu: 500m
+      memory: 512Mi
 
 worker:
-  image: "vaderspb/arcadium-worker:0.0.1v3"
+  image: "vaderspb/arcadium-worker:0.0.1v4"
   resources:
     limits:
       cpu: 1000m
