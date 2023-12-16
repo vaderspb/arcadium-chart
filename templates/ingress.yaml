@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: arcadium-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /transport
+            pathType: Prefix
+            backend:
+              service:
+                name: arcadium-transport-service
+                port:
+                  number: 8080
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: arcadium-web-service
+                port:
+                  number: 8080

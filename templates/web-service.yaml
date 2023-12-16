@@ -3,10 +3,9 @@ kind: Service
 metadata:
   name: arcadium-web-service
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
-    - nodePort: 30002
-      port: 80
+    - port: 8080
       targetPort: 80
       protocol: TCP
       name: http
