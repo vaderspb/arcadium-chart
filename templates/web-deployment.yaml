@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arcadium-web
+spec:
+  replicas: {{ .Values.web.replicaCount }}
+  selector:
+    matchLabels:
+      app: arcadium-web
+  template:
+    metadata:
+      labels:
+        app: arcadium-web
+    spec:
+      containers:
+        - name: app
+          image: {{ .Values.web.image }}
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.web.resources | nindent 12 }}

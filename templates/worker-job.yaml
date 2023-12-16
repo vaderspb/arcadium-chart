@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: arcadium-worker
+spec:
+  backoffLimit: 100
+  template:
+    metadata:
+      labels:
+        app: arcadium-worker
+    spec:
+      hostname: job1
+      subdomain: arcadium-worker
+      containers:
+        - name: app
+          image: {{ .Values.worker.image }}
+          args:
+            - -XX:InitialRAMPercentage=80
+            - -XX:MaxRAMPercentage=80
+          env:
+            - name: ROM_FILE
+              value: /opt/arkadium/Battletoads.nes
+            - name: INACTIVITY_DURATION
+              value: P1D
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.worker.resources | nindent 12 }}
+      restartPolicy: Never
