@@ -9,6 +9,17 @@ transport:
       cpu: 500m
       memory: 512Mi
 
+web:
+  image: "vaderspb/arcadium-web:0.0.1v1"
+  replicaCount: 1
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 500m
+      memory: 512Mi
+
 worker:
   image: "vaderspb/arcadium-worker:0.0.1v4"
   resources:
