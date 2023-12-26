@@ -13,6 +13,13 @@ spec:
                 name: arcadium-transport-service
                 port:
                   number: 8080
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: arcadium-api-server-service
+                port:
+                  number: 8080
           - path: /
             pathType: Prefix
             backend:

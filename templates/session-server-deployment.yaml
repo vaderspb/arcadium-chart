@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arcadium-session-server
+spec:
+  replicas: {{ .Values.transport.replicaCount }}
+  selector:
+    matchLabels:
+      app: arcadium-session-server
+  template:
+    metadata:
+      labels:
+        app: arcadium-session-server
+    spec:
+      containers:
+        - name: app
+          image: {{ .Values.sessionServer.image }}
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.sessionServer.resources | nindent 12 }}
