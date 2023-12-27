@@ -12,6 +12,7 @@ spec:
       labels:
         app: arcadium-session-server
     spec:
+      serviceAccountName: session-server-serviceaccount
       containers:
         - name: app
           image: {{ .Values.sessionServer.image }}
