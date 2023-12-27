@@ -1,5 +1,5 @@
 transport:
-  image: "vaderspb/arcadium-transport:0.0.1v5"
+  image: "vaderspb/arcadium-transport:0.0.1v7"
   replicaCount: 1
   resources:
     limits:
@@ -10,7 +10,7 @@ transport:
       memory: 512Mi
 
 apiServer:
-  image: "vaderspb/arcadium-api-server:0.0.1v5"
+  image: "vaderspb/arcadium-api-server:0.0.1v7"
   replicaCount: 1
   resources:
     limits:
@@ -21,7 +21,7 @@ apiServer:
       memory: 512Mi
 
 sessionServer:
-  image: "vaderspb/arcadium-session-server:0.0.1v5"
+  image: "vaderspb/arcadium-session-server:0.0.1v7"
   replicaCount: 1
   resources:
     limits:
@@ -43,7 +43,7 @@ web:
       memory: 512Mi
 
 worker:
-  image: "vaderspb/arcadium-worker:0.0.1v5"
+  image: "vaderspb/arcadium-worker:0.0.1v7"
   resources:
     limits:
       cpu: 1000m
