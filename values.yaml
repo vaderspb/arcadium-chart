@@ -31,6 +31,16 @@ sessionServer:
       cpu: 500m
       memory: 512Mi
 
+worker:
+  image: vaderspb/arcadium-worker:0.0.1v25
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 2048Mi
+    requests:
+      cpu: 1000m
+      memory: 2048Mi
+
 web:
   image: vaderspb/arcadium-web:0.0.1v1
   replicaCount: 1
@@ -41,16 +51,6 @@ web:
     requests:
       cpu: 500m
       memory: 512Mi
-
-worker:
-  image: vaderspb/arcadium-worker:0.0.1v25
-  resources:
-    limits:
-      cpu: 1000m
-      memory: 2048Mi
-    requests:
-      cpu: 1000m
-      memory: 2048Mi
 
 autoscaling:
   enabled: false
