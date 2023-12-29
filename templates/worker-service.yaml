@@ -5,6 +5,7 @@ metadata:
 spec:
   clusterIP: None
   ports:
-    - port: 8080
+    - name: http2
+      port: 8080
   selector:
     app: arcadium-worker

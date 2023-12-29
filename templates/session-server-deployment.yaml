@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arcadium-session-server
+spec:
+  replicas: {{ .Values.transport.replicaCount }}
+  selector:
+    matchLabels:
+      app: arcadium-session-server
+  template:
+    metadata:
+      labels:
+        app: arcadium-session-server
+    spec:
+      serviceAccountName: session-server-serviceaccount
+      containers:
+        - name: app
+          image: {{ .Values.sessionServer.image }}
+          args:
+            - --spring.config.additional-location=file:/opt/arcadium/application.properties
+          ports:
+            - name: http2
+              containerPort: 8080
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.sessionServer.resources | nindent 12 }}
+          volumeMounts:
+            - mountPath: /opt/arcadium
+              name: arcadium-session-server-config
+      volumes:
+        - name: arcadium-session-server-config
+          configMap:
+            name: arcadium-session-server-config

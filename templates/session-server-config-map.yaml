@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: arcadium-session-server-config
+data:
+  application.properties: |
+    arcadium.worker.image={{ .Values.worker.image }}
+    arcadium.worker.resources.limits.cpu={{ .Values.worker.resources.limits.cpu }}
+    arcadium.worker.resources.limits.memory={{ .Values.worker.resources.limits.memory }}
+    arcadium.worker.resources.requests.cpu={{ .Values.worker.resources.limits.cpu }}
+    arcadium.worker.resources.requests.memory={{ .Values.worker.resources.limits.memory }}

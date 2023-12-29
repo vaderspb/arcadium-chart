@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arcadium-api-server
+spec:
+  replicas: {{ .Values.apiServer.replicaCount }}
+  selector:
+    matchLabels:
+      app: arcadium-api-server
+  template:
+    metadata:
+      labels:
+        app: arcadium-api-server
+    spec:
+      containers:
+        - name: app
+          image: {{ .Values.apiServer.image }}
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.apiServer.resources | nindent 12 }}
