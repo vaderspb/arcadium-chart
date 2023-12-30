@@ -19,5 +19,19 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
+          livenessProbe:
+            httpGet:
+              port: http
+              path: /api/actuator/health
+            failureThreshold: 10
+            periodSeconds: 5
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              port: http
+              path: /api/actuator/health
+            failureThreshold: 10
+            periodSeconds: 5
+            timeoutSeconds: 5
           resources:
             {{- toYaml .Values.apiServer.resources | nindent 12 }}

@@ -17,7 +17,15 @@ spec:
           image: {{ .Values.web.image }}
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: 80
               protocol: TCP
+          livenessProbe:
+            httpGet:
+              port: 80
+              path: /
+          readinessProbe:
+            httpGet:
+              port: 80
+              path: /
           resources:
             {{- toYaml .Values.web.resources | nindent 12 }}
